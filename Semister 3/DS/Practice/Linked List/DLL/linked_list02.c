@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>   // ✅ Needed for strcpy
+#include <string.h>   
 
 struct node {
     char data[50];
