@@ -6,7 +6,7 @@ struct node {
     struct node *next;
 };
 
-int main(){
+int main() {
     struct node *head = NULL;
     struct node *one = NULL;
     struct node *two = NULL;
