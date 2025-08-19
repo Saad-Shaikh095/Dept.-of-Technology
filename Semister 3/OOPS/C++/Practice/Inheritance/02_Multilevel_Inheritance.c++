@@ -24,9 +24,11 @@ class Puppy : public Dog {
 
 int main (){
     Dog d;
+
     d.bark();
     
     Puppy p;
+    
     p.weep();
     p.bark();
 

@@ -17,6 +17,7 @@ class Dog: public Animal {
 
 int main() {
     Dog d;
+    
     d.eat();   
     d.bark();  
 

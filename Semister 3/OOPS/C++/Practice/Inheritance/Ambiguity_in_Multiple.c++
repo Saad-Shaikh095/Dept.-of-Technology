@@ -21,6 +21,7 @@ class C: public A, public B{
 
 int main(){
     C obj;
+    
     obj.A::show();
     obj.B::show();
 
