@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-    int n, key, low, high, mid;
+    int n, key, low, high, mid, choice;
 
     printf("Enter number of elements: ");
     scanf("%d", &n);
@@ -13,27 +13,56 @@ int main() {
         scanf("%d", &arr[i]);
     }
 
-    printf("Enter key to search: ");
-    scanf("%d", &key);
+    do {
+        printf("\nMenu:\n");
+        printf("1. Search a key\n");
+        printf("2. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
 
-    low = 0;
-    high = n - 1;
+        switch (choice) {
+            case 1:
+                printf("Enter key to search: ");
+                scanf("%d", &key);
 
-    while (low <= high) {
-        mid = (low + high) / 2;
+                low = 0;
+                high = n - 1;
+                int found = 0;
 
-        if (arr[mid] == key) {
-            printf("Key found at index %d\n", mid);
-            return 0;
+                while (low <= high) {
+                    mid = (low + high) / 2;
+                    int cmp = (arr[mid] == key) ? 0 : (arr[mid] < key ? -1 : 1);
+
+                    switch (cmp) {
+                        case 0:
+                            printf("Key found at index %d\n", mid);
+                            found = 1;
+                            low = high + 1; // force exit from loop
+                            break;
+
+                        case -1:
+                            low = mid + 1;
+                            break;
+
+                        case 1:
+                            high = mid - 1;
+                            break;
+                    }
+                }
+
+                if (!found) {
+                    printf("Key not found\n");
+                }
+                break;
+
+            case 2:
+                printf("Exiting program...\n");
+                break;
+
+            default:
+                printf("Invalid choice! Try again.\n");
         }
-        else if (arr[mid] < key) {
-            low = mid + 1; // Search in right half
-        }
-        else {
-            high = mid - 1; // Search in left half
-        }
-    }
+    } while (choice != 2);
 
-    printf("Key not found\n");
     return 0;
 }
