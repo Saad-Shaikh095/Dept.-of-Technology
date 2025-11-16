@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    // Virtual function allows overriding in derived classes
+    virtual void sound() {
+        cout << "Animal makes a sound" << endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    // Override keyword ensures this function overrides a base class method
+    void sound() override {
+        cout << "Dog barks" << endl;
+    }
+};
+
+int main() {
+    Animal* a;   // Base class pointer
+    Dog d;
+
+    a = &d;
+    a->sound();  // Output: Dog barks (runtime polymorphism)
+
+    return 0;
+}
